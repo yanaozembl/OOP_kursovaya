@@ -77,7 +77,6 @@ namespace WpfApp1
         {
             CreateFlat.CreateFlat create = new CreateFlat.CreateFlat();
             create.Show();
-            
         }
         internal void FlatDataOutput(IOrderedQueryable<Flat> dbSet)
         {
@@ -132,12 +131,12 @@ namespace WpfApp1
             }
             else if (db.Client.Where(b => b.Email == Email.Text).FirstOrDefault() == null)
             {
-                Email.Background = Brushes.DarkRed;
+                Email.Background = Brushes.Red;
                 MessageBox.Show("Email введен некорректно");
             }
             else if (db.Client.Where(b => b.Password == PassBox.Password).FirstOrDefault() == null)
             {
-                PassBox.Background = Brushes.DarkRed;
+                PassBox.Background = Brushes.Red;
                 MessageBox.Show("Пароль введен некорректно");
             }
         }
@@ -152,51 +151,65 @@ namespace WpfApp1
             {
                 MainForm.Height = 310;
             }
-
         }
+
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-            string email = Email.Text.ToLower().Trim();
+            string email = EmailReg.Text.ToLower().Trim();
             string pass = PassBoxReg.Password;
             string pass_2 = PassBoxReg_2.Password;
 
-            Email.ToolTip = "";
-            Email.Background = Brushes.Transparent;
+            EmailReg.ToolTip = "";
+            EmailReg.Background = Brushes.Transparent;
 
-            PassBox.ToolTip = "";
-            PassBox.Background = Brushes.Transparent;
+            PassBoxReg.ToolTip = "";
+            PassBoxReg.Background = Brushes.Transparent;
 
             PassBoxReg_2.ToolTip = "";
             PassBoxReg_2.Background = Brushes.Transparent;
+            try
+            {
+                if (Surname.Text == "" || Name.Text == "" || Patronymic.Text == "" || PhoneNum.Text == "" || EmailReg.Text == "" || PassBoxReg.Password == "" || PassBoxReg_2.Password == "")
+                    throw new Exception("Введите все поля.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
 
             if (email.Length < 5 || email.Contains('@') == false || email.Contains('.') == false)
             {
-                Email.ToolTip = "Email введен некорректно";
-                Email.Background = Brushes.DarkRed;
+                EmailReg.ToolTip = "Email введен некорректно";
+                EmailReg.Background = Brushes.Red;
             }
             else if (pass.Length <= 5)
             {
-                PassBox.ToolTip = "Пароль должен быть более 5 символов";
-                PassBox.Background = Brushes.DarkRed;
+                PassBoxReg.ToolTip = "Пароль должен быть более 5 символов";
+                PassBoxReg.Background = Brushes.Red;
             }
             else if (pass != pass_2)
             {
                 PassBoxReg_2.ToolTip = "Пароли не совпадают";
-                PassBoxReg_2.Background = Brushes.DarkRed;
+                PassBoxReg_2.Background = Brushes.Red;
             }
             else
             {
                 try
                 {
-                    if(Convert.ToInt32(PhoneNum.Text)<=0)
-                        throw new Exception("Поле не должно быть отрицательным");
-                    Regex regex = new Regex(@"(2|3|9|4){2}\[0-9]{7}");
-                    string str="297897878";
-                    MatchCollection matches = regex.Matches(PhoneNum.Text);
-                    if (matches.Count > 0)
+                    if (Convert.ToInt32(PhoneNum.Text) <= 0)
+                        throw new Exception("Поле не должно быть отрицательным или равным нулю");
+                    Regex regexNum = new Regex(@"(2|3|9|4){2}[0-9]{7}");
+                    MatchCollection matchesNum = regexNum.Matches(PhoneNum.Text);
+                    Regex regexText = new Regex(@"[а-я]");
+                    MatchCollection matchesSurname = regexText.Matches(Surname.Text);
+                    MatchCollection matchesName = regexText.Matches(Name.Text);
+                    MatchCollection matchesPatronymic = regexText.Matches(Patronymic.Text);
+
+                    if (matchesNum.Count > 0)
                     {
                         if (Woman.IsChecked == true)
-                        selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "ж", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
+                            selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "ж", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
                         else selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "м", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
                         db.Client.Add(selectedClient);
                         db.SaveChanges();
@@ -204,8 +217,8 @@ namespace WpfApp1
                         create.Show();
                         Close();
                     }
-                    else 
-                        throw new Exception("Номер может начинаться на 29, 44, 33, а также содержать только 9 цифр");
+                    else
+                        throw new Exception("Номер может начинаться на 29, 44, 33, а также содержать только 9 цифр.");
                 }
                 catch (NullReferenceException)
                 {
@@ -215,9 +228,9 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Некорректный формат данных. Проверьте значение полей.");
                 }
-                catch( Exception e)
+                catch (Exception exp)
                 {
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(exp.Message);
                 }
             }
         }

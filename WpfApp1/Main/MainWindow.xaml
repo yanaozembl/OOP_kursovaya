@@ -92,7 +92,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="10,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16"><Run Text="Повторить"/><Run Text=" пароль"/><LineBreak/><Run/></TextBlock>
                         <Button x:Name="RegisterButton" Click="Button_Reg_Click" Content="{DynamicResource Register}" HorizontalAlignment="Left" Margin="10,426,0,0" VerticalAlignment="Top" Width="196" FontSize="15"  BorderBrush="#FFC780D8" BorderThickness="2" Foreground="Black" Height="28" Background="White"/>
                         <StackPanel x:Name="Sex" Margin="10,176,108.333,29" >
-                            <RadioButton x:Name="Woman" Content="женщина" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="89" />
+                            <RadioButton x:Name="Woman" Content="женщина" IsChecked="True" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="89" />
                             <RadioButton x:Name="Man" Content="мужчина" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" />
                         </StackPanel>
 

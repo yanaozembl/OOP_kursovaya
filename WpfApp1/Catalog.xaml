@@ -173,12 +173,12 @@
         <Button Click="Button_Reservation_Click" Content="Бронирования" HorizontalAlignment="Left" Margin="945,0,0,0" VerticalAlignment="Top" Width="104" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF0E0E0E" Height="24" FontFamily="Open sans" FontSize="14" Grid.ColumnSpan="2"/>
         <Button Click="Button_Sign_out_Click" Content="Выйти" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,0,0,0" VerticalAlignment="Top" Width="56" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF0E0E0E" Height="24" FontFamily="Open sans" FontSize="14"/>
         <Button Click="Image_Account_Click" Content="Управление аккаунтом" HorizontalAlignment="Left" Margin="40.667,0,0,0" VerticalAlignment="Top" Width="166" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF0E0E0E" Height="24" FontFamily="Open sans" FontSize="14" Grid.Column="1"/>
-        <Button Content="Минск" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Могилев" Grid.Column="1" HorizontalAlignment="Left" Margin="113.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Витебск" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="56" Background="{x:Null}" BorderBrush="#FFFFDD00" Click="Button_Click"/>
-        <Button Content="Гомель" Grid.Column="1" HorizontalAlignment="Left" Margin="165.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Гродно" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Брест" Grid.Column="1" HorizontalAlignment="Left" Margin="75.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Click="Button_Minsk_Click" Content="Минск" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Click="Button_Mogilev_Click" Content="Могилев" Grid.Column="1" HorizontalAlignment="Left" Margin="113.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Click="Button_Vitebsk_Click" Content="Витебск" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="56" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Click="Button_Gomel_Click" Content="Гомель" Grid.Column="1" HorizontalAlignment="Left" Margin="165.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Click="Button_Grodno_Click" Content="Гродно" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Click="Button_Brest_Click" Content="Брест" Grid.Column="1" HorizontalAlignment="Left" Margin="75.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="161" Margin="9.667,82,0,0" Grid.Row="1" VerticalAlignment="Top" Width="258">
             <TextBlock Text="Популярные фильтры" Margin="10"/>
             <CheckBox x:Name="Wifi" Content="Wi-Fi" Margin="10 0 10 10" Unchecked="CheckBox_Comfort_Checked" Checked="CheckBox_Comfort_Checked"/>

@@ -15,6 +15,7 @@ namespace WpfApp1
         public static Catalog CatalogForm;
         public static Flat selectedFlat;
         public static Block selectedBlock;
+        private static List<Block> selectedBlocks;
         private int imageIndex = 0;
         private string[] imageList;
         private string descr;
@@ -23,12 +24,10 @@ namespace WpfApp1
         {
             InitializeComponent();
             CatalogForm = this;
-
             using (SampleContext db = new SampleContext())
             {
                 DataOutput(db.Flat.Where(f => f.Status == 0).ToList());
             }
-
         }
         public void DataOutput(List<Flat> flats)
         {
@@ -273,11 +272,6 @@ namespace WpfApp1
                 DataOutput(db.Flat.Where(f => f.Status == 0 && f.Subway_stat == subway).ToList());
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             //if (Sorting.SelectedItem == PriceAsc || Sorting.SelectedItem == null)
@@ -342,5 +336,58 @@ namespace WpfApp1
             }
         }
 
+        private void Button_Minsk_Click(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                var selectedFlats=db.Flat.Where(x => x.City_name == "Минск").ToList();
+                DataOutput(selectedFlats);
+            }
+        }
+
+        private void Button_Mogilev_Click(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                var selectedFlats = db.Flat.Where(x => x.City_name == "Могилев").ToList();
+                DataOutput(selectedFlats);
+            }
+        }
+
+        private void Button_Vitebsk_Click(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                var selectedFlats = db.Flat.Where(x => x.City_name == "Витебск").ToList();
+                DataOutput(selectedFlats);
+            }
+        }
+
+        private void Button_Grodno_Click(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                var selectedFlats = db.Flat.Where(x => x.City_name == "Гродно").ToList();
+                DataOutput(selectedFlats);
+            }
+        }
+
+        private void Button_Brest_Click(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                var selectedFlats = db.Flat.Where(x => x.City_name == "Брест").ToList();
+                DataOutput(selectedFlats);
+            }
+        }
+
+        private void Button_Gomel_Click(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                var selectedFlats = db.Flat.Where(x => x.City_name == "Гомель").ToList();
+                DataOutput(selectedFlats);
+            }
+        }
     }
 }
