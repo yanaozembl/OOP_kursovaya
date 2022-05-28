@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp1.Booking"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Booking" Height="487.333" Width="358">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="28,83,0,0" TextWrapping="Wrap" Text="Дата заезда" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,280,0,0" TextWrapping="Wrap" Text="Срок аренды" VerticalAlignment="Top"/>
+        <TextBox x:Name="Rental_period" HorizontalAlignment="Left" Height="23" Margin="26,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Цена"/><Run Text=" в месяц"/><Run Text=":"/></TextBlock>
+        <Button Content="Оставить заявку" Click="Button_Send_Click" HorizontalAlignment="Center" Margin="122,406,121.333,0" VerticalAlignment="Top" Width="108" Background="#FFFFDD00" BorderBrush="#FFFFDD00"/>
+        <Calendar x:Name="Calendar" DisplayDateStart='2022-02-02' HorizontalAlignment="Left" Margin="28,106,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,18,0,0" TextWrapping="Wrap" Text="Вы хотите оставить заявку на:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="28,39,0,0" MaxWidth="280"  TextWrapping="Wrap" Text="Название квартиры" VerticalAlignment="Top" />
+        <TextBlock x:Name="Price" HorizontalAlignment="Left" Margin="122,364,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,343,0,0" TextWrapping="Wrap" Text="Залог:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Deposit" HorizontalAlignment="Left" Margin="122,343,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

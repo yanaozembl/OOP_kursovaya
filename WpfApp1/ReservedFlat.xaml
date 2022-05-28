@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfApp1.ReservedFlat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        Title="ReservedFlat" MinHeight="400" Height="600" MaxHeight="800" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="301*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="LightGray" BorderThickness="0.5" Grid.Row="1" Margin="0,0,0.333,-0.333" Grid.RowSpan="2"></Border>
+        <Border BorderBrush="LightGray" BorderThickness="0.5" Grid.Row="2" Margin="0,0,0.333,-0.333" Grid.RowSpan="2">
+        </Border>
+        <Grid Grid.Row="1" Margin="15,0,0,0" Width="184" HorizontalAlignment="Left">
+            <Image x:Name="Photo"  HorizontalAlignment="Center"  VerticalAlignment="Top" Stretch="Fill"/>
+        </Grid>
+        <TextBlock x:Name="Address" HorizontalAlignment="Left" Margin="218,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="13" Grid.Row="1" MaxWidth="250"/>
+        <Line  Grid.Row="1" Stroke="Black" StrokeThickness="0.5" X1="0" Y1="0" X2="0" Y2="130" Margin="611,0,177.333,300" Width="5" Grid.RowSpan="2"/>
+        <TextBlock  Grid.Row="1"  HorizontalAlignment="Left" Margin="491,10,0,0" TextWrapping="Wrap" Text="Дата заезда" VerticalAlignment="Top" FontSize="10" Width="59"/>
+        <Line  Grid.Row="1" Stroke="Black" StrokeThickness="0.5" X1="0" Y1="0" X2="0" Y2="130" Margin="424,0,364.333,0.333" Width="5"/>
+        <TextBlock  Grid.Row="1" HorizontalAlignment="Left" Margin="669,10,0,0" TextWrapping="Wrap" Text="Срок заезда" VerticalAlignment="Top" FontSize="10" Width="56"/>
+        <Grid Grid.Row="2" MaxHeight="200" MaxWidth="360" Margin="424,10,10.333,189.667">
+            <Image x:Name="Map"  HorizontalAlignment="Center"  VerticalAlignment="Top" Stretch="Fill"/>
+        </Grid>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="15,9.667,0,0" TextWrapping="Wrap" Text="Описание квартиры" VerticalAlignment="Top" FontSize="16" Width="155"/>
+        <TextBlock  Grid.Row="1" x:Name="ReserveDate" HorizontalAlignment="Left" Margin="461,36,0,0" TextWrapping="Wrap" Text="Дата заезда" VerticalAlignment="Top" FontSize="16" Width="130"/>
+        <TextBlock  Grid.Row="1" x:Name="Rent_period" HorizontalAlignment="Left" Margin="657,36,0,0" TextWrapping="Wrap" Text="Дата заезда" VerticalAlignment="Top" FontSize="16" Width="93"/>
+        <StackPanel Grid.Row="2" MaxHeight="600" Margin="15,36,369.333,9.667" >
+            <TextBlock Grid.Row="2" x:Name="Description" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Описание квартиры" VerticalAlignment="Top" FontSize="13" MaxWidth="400" MaxHeight="500"/>
+            <StackPanel Height="33" Orientation="Horizontal" Margin="0 20 0 0">
+                <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Цена:" VerticalAlignment="Top" FontSize="10" MaxWidth="400"/>
+                <TextBlock Grid.Row="2" x:Name="Total_cost" HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" Text="Цена:" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" MaxWidth="400"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

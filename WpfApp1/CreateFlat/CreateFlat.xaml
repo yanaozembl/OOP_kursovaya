@@ -1,0 +1,93 @@
+﻿<Window x:Class="WpfApp1.CreateFlat.CreateFlat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.CreateFlat"
+        mc:Ignorable="d"
+        Title="CreateFlat" Height="636" Width="571" MaxWidth="571.442">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border CornerRadius="25" BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Margin="0,0,-0.333,1.667">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="578*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="26,28.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource City}" Grid.Row="1" Height="16" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="181,28.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource Street}" Grid.Row="1" Height="16" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="336,28.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource House}" Grid.Row="1" Height="16" Width="85"/>
+        <TextBox x:Name="City" Text="" HorizontalAlignment="Left" Height="23" Margin="26,49.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="Street" Text="" HorizontalAlignment="Left" Height="23" Margin="181,49.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="House"  Text="" HorizontalAlignment="Left" Height="23" Margin="336,49.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="331,160.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{DynamicResource Price}" Grid.Row="1" Height="16"/>
+        <TextBox  x:Name="Price"  Text="" HorizontalAlignment="Left" Height="23" Margin="331,180.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="90" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,159.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Text="{DynamicResource Area}" Grid.Row="1" Height="16"/>
+        <TextBox x:Name="Square"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,180.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="181,160.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{DynamicResource CountOfRooms}" Grid.Row="1" Height="16"/>
+        <TextBox  x:Name="CountOfRoom"  Text="" HorizontalAlignment="Left" Height="23" Margin="181,180.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Button Click="AddFlat" Content="{DynamicResource Add}"  HorizontalAlignment="Center" Margin="214,504.333,215,0" VerticalAlignment="Top" Width="136" Background="#FFFFDD00" BorderBrush="#FFFFDD00" Grid.Row="1" Height="23" />
+        <TextBlock HorizontalAlignment="Left" Margin="449,27.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource Flat}" Grid.Row="1" Height="16" Width="85"/>
+        <TextBox x:Name="FlatNum"  Text="" HorizontalAlignment="Left" Height="23" Margin="449,49.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,0.333,0,0" TextWrapping="Wrap" Text="{DynamicResource AddNewFlat}" VerticalAlignment="Top" Foreground="White" Height="16" Width="173" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,232.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text="{DynamicResource Description}" Grid.Row="1" Height="16"/>
+        <TextBox x:Name="Description"  HorizontalAlignment="Left" Height="142" Margin="26,253.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="506" Grid.Row="1">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Добавьте полное описание квартиры" Foreground="Gray"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+
+        </TextBox>
+        <Button Content="{DynamicResource ChooseDirectory}" Click="Button_Directory_Click" HorizontalAlignment="Left" Margin="24,462.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="23" Background="#FFFFDD00" BorderBrush="#FFFFDD00"/>
+        <TextBlock x:Name="Pathe" HorizontalAlignment="Left" Margin="181,462.333,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Выбранный путь" VerticalAlignment="Top" Foreground="#7F000000" MaxWidth="250" Height="16" />
+        <TextBlock HorizontalAlignment="Left" Margin="449,159.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Text="{DynamicResource Deposit}" Grid.Row="1" Height="16"/>
+        <TextBox x:Name="Deposit"  Text="" HorizontalAlignment="Left" Height="23" Margin="449,181.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,97.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Text="{DynamicResource District}" Grid.Row="1" Height="16"/>
+        <TextBox x:Name="District"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="181,97.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Text="{DynamicResource Subway}" Grid.Row="1" Height="16"/>
+        <TextBox x:Name="Subway_stat"  Text="" HorizontalAlignment="Left" Height="23" Margin="181,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="336,97.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource Floor}" Grid.Row="1" Height="16" Width="85"/>
+        <TextBox x:Name="Floor"  Text="" HorizontalAlignment="Left" Height="23" Margin="336,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="449,96.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource MaxFloor}" Grid.Row="1" Height="16" Width="85"/>
+        <TextBox x:Name="MaxFloor"  Text="" HorizontalAlignment="Left" Height="23" Margin="449,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="26,400.333,33,115.667">
+            <CheckBox x:Name="Wifi" Content="Wi-Fi" VerticalAlignment="Center"   FontSize="11" Margin="0,10,0,10.667" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
+            <CheckBox x:Name="Parking" Content="Бесплатная парковка" VerticalAlignment="Center" FontSize="11" Margin="15,10,0,10.667" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
+            <CheckBox x:Name="Conditioner" Content="Кондиционер" VerticalAlignment="Center" FontSize="11" Margin="15,10,0,10.667" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
+            <CheckBox x:Name="Tree_v" Content="Вид на сад" VerticalAlignment="Center" FontSize="11" Margin="15,10,0,10.667" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
+            <CheckBox x:Name="City_v" Content="Вид на город" VerticalAlignment="Center" FontSize="11" Margin="15,10,0,10.667" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
+
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Добавление новой квартиры" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

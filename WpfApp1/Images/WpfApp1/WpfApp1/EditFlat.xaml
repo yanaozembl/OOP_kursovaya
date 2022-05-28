@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfApp1.EditFlat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="EditFlat" Height="583.657" Width="307" MaxWidth="307">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border CornerRadius="25" BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Margin="0,0,-1,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="510*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" Background="#FFC13FE6" Margin="0,0,0,0.333" />
+        <TextBox x:Name="City" Text="" HorizontalAlignment="Left" Height="23" Margin="26,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="Street" Text="" HorizontalAlignment="Left" Height="23" Margin="26,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="House"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,156,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,253.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{DynamicResource Price}" Grid.Row="1"/>
+        <TextBox  x:Name="Price"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,276,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"  Text="{DynamicResource Area}" Grid.Row="1"/>
+        <TextBox x:Name="Square"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,342,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Text="{DynamicResource CountOfRooms}" Grid.Row="1"/>
+        <TextBox  x:Name="CountOfRoom"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,405,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Button Click="Editing" Content="{DynamicResource Edit}" Template="{StaticResource btTemplate}" HorizontalAlignment="Left" Margin="82,456.333,0,0" VerticalAlignment="Top" Width="134" Background="#FFDDB3E9" BorderBrush="#FFBB80CC" Grid.Row="1" Height="27" />
+        <TextBox x:Name="FlatNum"  Text="" HorizontalAlignment="Left" Height="23" Margin="26,216,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,22,0,0" TextWrapping="Wrap" Text="{DynamicResource EditNewFlat}" VerticalAlignment="Top" Foreground="White" Width="177"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,194.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource Flat}" Grid.Row="1" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,134.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource House}" Grid.Row="1" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,77.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Text="{DynamicResource Street}" Grid.Row="1" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,24.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource City}" Grid.Row="1" Width="120"/>
+
+    </Grid>
+
+</Window>
