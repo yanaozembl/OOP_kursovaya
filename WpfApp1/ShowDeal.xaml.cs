@@ -40,10 +40,10 @@ namespace WpfApp1
             StreamResourceInfo sri = System.Windows.Application.GetResourceStream(new Uri("Main/Normal - Techno Set.cur", UriKind.Relative));
             System.Windows.Input.Cursor customCursor = new System.Windows.Input.Cursor(sri.Stream);
             this.Cursor = customCursor;
-            Fill_list(ListAppViewings, 1);
-            Fill_list(ListAppBookings, 3);
-            Fill_list(ListViews, 2);
-            Fill_list(ListBookings, 4);
+            Fill_flats_list(ListAppViewings, 1);
+            Fill_flats_list(ListAppBookings, 3);
+            Fill_flats_list(ListViews, 2);
+            Fill_flats_list(ListBookings, 4);
         }
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -75,11 +75,11 @@ namespace WpfApp1
                 {
                     db.Database.ExecuteSqlCommand("update Deal set status=4 where flat_id=@id and deal_start_date=@date", new SqlParameter("@id", selectedBlock.Id), new SqlParameter("@date", selectedBlock.Deal_start_date.Substring(3)));
                     ListAppBookings.Items.Remove(ListAppBookings.SelectedItem);
-                    Fill_list(ListBookings, 4);
+                    Fill_flats_list(ListBookings, 4);
                 }
             }
         }
-        internal static void Fill_list(ListView List, int status)
+        internal static void Fill_flats_list(ListView List, int status)
         {
             List.Items.Clear();
             using (SampleContext db = new SampleContext())
@@ -106,7 +106,7 @@ namespace WpfApp1
                 foreach (var item in selectedFlats)
                 {
                     if (item.View_date != null && item.Deal_start_date!=null)
-                    {
+                    {   
                         DateTime date_view = (DateTime)item.View_date;
                         DateTime date_start = (DateTime)item.Deal_start_date;
                         List.Items.Add(new ApplicateBlock(item.Id, item.City, item.Street, item.House, item.Flat, item.Price, item.Name, item.Phone, item.Email, date_start.ToShortDateString(), item.Rental_period, date_view.ToShortDateString()));

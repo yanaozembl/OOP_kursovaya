@@ -188,16 +188,24 @@ namespace WpfApp1
             {
                 try
                 {
-                    if (Woman.IsChecked == true)
+                    if(Convert.ToInt32(PhoneNum.Text)<=0)
+                        throw new Exception("Поле не должно быть отрицательным");
+                    Regex regex = new Regex(@"(2|3|9|4){2}\[0-9]{7}");
+                    string str="297897878";
+                    MatchCollection matches = regex.Matches(PhoneNum.Text);
+                    if (matches.Count > 0)
+                    {
+                        if (Woman.IsChecked == true)
                         selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "ж", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
-                    else selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "м", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
-
-                    db.Client.Add(selectedClient);
-                    db.SaveChanges();
-                    Catalog create = new Catalog();
-                    create.Show();
-                    Close();
-
+                        else selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "м", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
+                        db.Client.Add(selectedClient);
+                        db.SaveChanges();
+                        Catalog create = new Catalog();
+                        create.Show();
+                        Close();
+                    }
+                    else 
+                        throw new Exception("Номер может начинаться на 29, 44, 33, а также содержать только 9 цифр");
                 }
                 catch (NullReferenceException)
                 {
@@ -207,7 +215,10 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Некорректный формат данных. Проверьте значение полей.");
                 }
-
+                catch( Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
         }
     }

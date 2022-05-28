@@ -35,7 +35,7 @@ namespace WpfApp1
                 var selectedFlat = db.Flat.Where(f => f.City_name == ShowDeal.selectedBlock.City && f.Street_name == ShowDeal.selectedBlock.Street && f.House_number == ShowDeal.selectedBlock.House && f.Flat_number == ShowDeal.selectedBlock.Flat).FirstOrDefault();
                 db.Database.ExecuteSqlCommand("update deal set status=2, view_date=@date where client_id=@client_id and flat_id=@flat_id", new SqlParameter("@date", date.Date), new SqlParameter("@client_id", selectedClient.Id), new SqlParameter("@flat_id", selectedFlat.Id));
                 ShowDeal.ShowDealForm.ListAppViewings.Items.Remove(ShowDeal.selectedBlock);
-                ShowDeal.Fill_list(ShowDeal.ShowDealForm.ListViews, 2);
+                ShowDeal.Fill_flats_list(ShowDeal.ShowDealForm.ListViews, 2);
                 Close();
             }
         }

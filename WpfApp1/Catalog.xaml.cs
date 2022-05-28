@@ -287,23 +287,21 @@ namespace WpfApp1
                 if (SearchBox.Text == String.Empty)
                     DataOutput(db.Flat.Where(x => x.Status == 0).OrderBy(x => x.Flat_price).ToList());
             }
-            //else
-            //    MainWindow.MainForm.FlatDataOutput(MainWindow.MainForm.db.Flat.Where(x => x.City_name.StartsWith(this.SearchText.Text) || x.Street_name.StartsWith(this.SearchText.Text)).OrderByDescending(x => x.Flat_price));
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             using (SampleContext db = new SampleContext())
             {
-                if (Sorting.SelectedItem == PriceAsc)
-                    DataOutput(db.Flat.Where(x => x.Status == 0).OrderBy(x => x.Flat_price).ToList());
+                List<Flat> flats=db.Flat.Where(x => x.Status == 0).ToList();
+              if (Sorting.SelectedItem == PriceAsc)
+                    DataOutput(flats.OrderBy(x => x.Flat_price).ToList());
                 else if (Sorting.SelectedItem == PriceDesc)
-                    DataOutput(db.Flat.Where(x => x.Status == 0).OrderByDescending(x => x.Flat_price).ToList());
+                    DataOutput(flats.OrderByDescending(x => x.Flat_price).ToList());
                 else if (Sorting.SelectedItem == SquareAsc)
-                    DataOutput(db.Flat.Where(x => x.Status == 0).OrderBy(x => x.Flat_area).ToList());
+                    DataOutput(flats.OrderBy(x => x.Flat_area).ToList());
                 else if (Sorting.SelectedItem == SquareDesc)
-                    DataOutput(db.Flat.Where(x => x.Status == 0).OrderByDescending(x => x.Flat_price).ToList());
-            }
+                    DataOutput(flats.OrderByDescending(x => x.Flat_price).ToList());            }
         }
         private void CheckBox_Comfort_Checked(object sender, RoutedEventArgs e)
         {
