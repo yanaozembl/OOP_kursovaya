@@ -16,12 +16,12 @@
             <RowDefinition Height="343*"/>
             <RowDefinition Height="290*"/>
         </Grid.RowDefinitions>
-        <Button Click="Button_Back_Click" Content="Назад" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="75" Height="21" Background="{x:Null}" BorderBrush="#CCFFDD00"/>
-        <Grid Grid.Row="1" Grid.Column="0" Margin="20,8.667,724.333,0" Grid.ColumnSpan="2">
+        <Button Click="Button_Back_Click" Content="Назад" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Width="75" Height="21" Background="{x:Null}" BorderBrush="#CCFFDD00"/>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="20,8.667,19,0">
             <Image x:Name="Photo"  HorizontalAlignment="Center"  VerticalAlignment="Top" Stretch="Fill"/>
         </Grid>
-        <Button Content="&lt;" Click="Button_Redo_click" HorizontalAlignment="Left" Margin="0,147.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="48" Height="21"/>
-        <Button Content=">"  Click="Button_Undo_click" HorizontalAlignment="Left" Margin="514,152.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="48" Height="21"/>
+        <Button Content="&lt;" Click="Button_Redo_click" HorizontalAlignment="Left" Margin="10,147.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="38" Height="21" Background="{x:Null}" BorderBrush="#CCFFDD00"/>
+        <Button Content=">"  Click="Button_Undo_click" HorizontalAlignment="Left" Margin="524,152.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="38" Height="21" Background="{x:Null}" BorderBrush="#CCFFDD00"/>
         <TabControl Grid.Column="1" Grid.Row="1" Margin="0,2.667,10.333,0">
             <TabItem Header= "Расположение на карте">
                 <TabItem.Content>
@@ -40,11 +40,11 @@
             </StackPanel>
         </StackPanel>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="358" FontSize="18"><Run Text="Самые популярные удобства и "/><Run Text="у"/><Run Text="слуги"/></TextBlock>
-        <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="10,27,0,0" FontSize="18" FontWeight="DemiBold" TextWrapping="Wrap" Text="Название квартиры" VerticalAlignment="Top" Height="24" MaxWidth="650"/>
+        <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="20,27,0,0" FontSize="18" FontWeight="DemiBold" TextWrapping="Wrap" Text="Название квартиры" VerticalAlignment="Top" Height="24" MaxWidth="650"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="9,63,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="10,60,25.333,34">
             <WrapPanel Orientation="Horizontal" ItemHeight="35"  >
-                <Image x:Name="ParkingImg" Source="C:\Users\User\Desktop\бгту\ООП\WpfApp1\WpfApp1\Images\parking.png" Height="35.3"/>
+                <Image x:Name="ParkingImg" Source="Images\parking.png" Height="35.3"/>
                 <TextBlock x:Name="Parking" TextWrapping="Wrap" TextAlignment="Center" Padding="0, 7,0 ,0" Text="Бесплатная парковка" Margin="5,0,0,0" FontSize="16" MaxWidth="169"/>
                 <Image x:Name="WifiImg" Source="Images\wifi.png" Margin="20, 0,0,0"/>
                 <TextBlock x:Name="Wifi" TextWrapping="Wrap" TextAlignment="Center" Padding="0, 7,0 ,0" Text="Бесплатный Wi-Fi" Margin="5,0,0,0" FontSize="16" MaxWidth="169"/>
@@ -59,10 +59,9 @@
                 <TextBlock  HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Залог:" VerticalAlignment="Center" Width="75" Height="23"/>
                 <TextBlock x:Name="Deposit" HorizontalAlignment="Left" Margin="55,0,0,0" TextWrapping="Wrap" FontSize="16" FontWeight="SemiBold" Text="TextBlock" VerticalAlignment="Top" Height="25" Width="81"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="auto" Width="auto" Margin="0,10,100,0">
+            <StackPanel Orientation="Horizontal" Height="auto" Width="auto" Margin="0,0,100,0">
                 <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Цена в месяц:" VerticalAlignment="Bottom" Height="20" Width="82"/>
                 <TextBlock x:Name="Price" HorizontalAlignment="Left" Margin="50,0,0,0" TextWrapping="Wrap" FontSize="16" FontWeight="SemiBold"  Text="TextBlock" VerticalAlignment="Top"/>
-
             </StackPanel>
         </StackPanel>
     </Grid>

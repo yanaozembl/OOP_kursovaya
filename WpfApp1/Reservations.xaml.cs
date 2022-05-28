@@ -25,6 +25,7 @@ namespace WpfApp1
         public static Block selectedBlock;
         public static Deal selectedDeal;
         public List<Flat> reserver_flats;
+        private string status;
         public Reservations()
         {        
             InitializeComponent();
@@ -42,13 +43,37 @@ namespace WpfApp1
                         else descr = item.Flat_description;
 
                         imageList = (string[])Directory.GetFiles(item.Folder_Path, "*.jp*g", SearchOption.AllDirectories);
+                        int statusNum = db.Deal.Where(d => d.Flat_id == item.Id && d.Client_id == MainWindow.selectedClient.Id).Select(d => d.Status).FirstOrDefault();
+                        switch (statusNum)
+                        {
+                            case 1:
+                                {
+                                    status = "Заявка на просмотр обрабатывается";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    status = "Просмотрено";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    status = "Заявка на бронирование обрабатывается";
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    status = "Забронировано";
+                                    break;
+                                }
+                        }
 
                         if (item.City_name.Trim().ToLower() != "минск")
                         {
-                            flatsList.Items.Add(new Block(item.Id, imageList[imageIndex], item.Room_count + "-комнатная квартира, " + item.City_name + ", ул." + item.Street_name + ", д." + item.House_number, item.District + " район", null, item.Subway_stat, item.Flat_area, item.Floor + " этаж из " + item.Max_floor, descr, item.Publication_date.ToShortDateString(), item.Flat_price));
+                            flatsList.Items.Add(new Block(item.Id, imageList[imageIndex], item.Room_count + "-комнатная квартира, " + item.City_name + ", ул." + item.Street_name + ", д." + item.House_number, item.District + " район", null, item.Subway_stat, item.Flat_area, item.Floor + " этаж из " + item.Max_floor, descr, item.Publication_date.ToShortDateString(), item.Flat_price, status));
                         }
                         else
-                            flatsList.Items.Add(new Block(item.Id, imageList[imageIndex], item.Room_count + "-комнатная квартира, " + item.City_name + ", ул." + item.Street_name + ", д." + item.House_number, item.District + " район", imagePath, item.Subway_stat, item.Flat_area, item.Floor + " этаж из " + item.Max_floor, descr, item.Publication_date.ToShortDateString(), item.Flat_price));
+                            flatsList.Items.Add(new Block(item.Id, imageList[imageIndex], item.Room_count + "-комнатная квартира, " + item.City_name + ", ул." + item.Street_name + ", д." + item.House_number, item.District + " район", imagePath, item.Subway_stat, item.Flat_area, item.Floor + " этаж из " + item.Max_floor, descr, item.Publication_date.ToShortDateString(), item.Flat_price, status));
                     }
                 }
             }

@@ -51,7 +51,6 @@ namespace WpfApp1
                 Confirm_Button.Visibility = Visibility.Visible;
             else Confirm_Button.Visibility = Visibility.Collapsed;
         }
-
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ListAppViewings.SelectedItem!=null|| ListAppBookings.SelectedItem!=null)
@@ -59,7 +58,6 @@ namespace WpfApp1
             else Confirm_Button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCACACA"));
 
         }
-
         private void Button_Confirm_Click(object sender, RoutedEventArgs e)
         {
             if(TabControl.SelectedItem == Applicate_view)
@@ -73,7 +71,7 @@ namespace WpfApp1
                 selectedBlock = (ApplicateBlock)ListAppBookings.SelectedItem;
                 using (SampleContext db=new SampleContext())
                 {
-                    db.Database.ExecuteSqlCommand("update Deal set status=4 where flat_id=@id and deal_start_date=@date", new SqlParameter("@id", selectedBlock.Id), new SqlParameter("@date", selectedBlock.Deal_start_date.Substring(3)));
+                    db.Database.ExecuteSqlCommand("update Deal set status=4 where flat_id=@id and deal_start_date=@date and status=3", new SqlParameter("@id", selectedBlock.Id), new SqlParameter("@date", selectedBlock.Deal_start_date.Substring(3)));
                     ListAppBookings.Items.Remove(ListAppBookings.SelectedItem);
                     Fill_flats_list(ListBookings, 4);
                 }
