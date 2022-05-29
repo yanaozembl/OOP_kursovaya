@@ -41,6 +41,7 @@
     <v:String x:Key="Date_start">Дата заезда</v:String>
     <v:String x:Key="Date_view">Дата просмотра</v:String>
     <v:String x:Key="Rental_period">Срок аренды</v:String>
+    <v:String x:Key="Back">Назад</v:String>
 
     <v:String x:Key="CountOfRooms">Количество комнат</v:String>
     <v:String x:Key="CountOfBookings">Количество бронирований</v:String>

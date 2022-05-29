@@ -344,9 +344,6 @@
     <Folder Include="ShowFlats\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\diagram.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\underground.jpg" />
   </ItemGroup>
   <ItemGroup>

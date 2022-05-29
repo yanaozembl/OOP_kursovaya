@@ -9,7 +9,7 @@
     <v:String x:Key="Trip">Trip</v:String>
     <v:String x:Key="Follow">Follow curiosity</v:String>
     <v:String x:Key="Enter">Sign in</v:String>
-
+    <v:String x:Key="Back">Sign out</v:String>
     <v:String x:Key="Minsk">Minsk</v:String>
     <v:String x:Key="Gomel">Gomel</v:String>
     <v:String x:Key="Grodno">Grodno</v:String>

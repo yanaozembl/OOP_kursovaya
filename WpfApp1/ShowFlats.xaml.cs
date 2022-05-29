@@ -93,31 +93,6 @@ namespace WpfApp1
                 DataOutput(db.Flat.ToList());
             }
         }
-
-        private void Sorting_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (Sorting.SelectedItem == PriceAsc) SortByPriceAsc();
-            else
-            {
-                SortByPriceDesc();
-            }
-        }
-        public void SortByPriceAsc()
-        {
-            using (SampleContext db = new SampleContext())
-            {
-                DataOutput(db.Flat.OrderBy(x => x.Flat_price).ToList());
-            }
-
-        }
-        void SortByPriceDesc()
-        {
-            using (SampleContext db = new SampleContext())
-            {
-                DataOutput(db.Flat.OrderByDescending(x => x.Flat_price).ToList());
-            }
-        }
-
         private void EditFlats(object sender, RoutedEventArgs e)
         {
             if (ShowFlats.ShowForm.ListView.SelectedItem != null)
@@ -133,10 +108,7 @@ namespace WpfApp1
         {
             using(SampleContext db = new SampleContext())
             {
-                if (Sorting.SelectedItem == PriceAsc || Sorting.SelectedItem == null)
-                    DataOutput(db.Flat.Where(x => x.City_name.StartsWith(this.SearchText.Text) || x.Street_name.StartsWith(this.SearchText.Text)).OrderBy(x => x.Flat_price).ToList());
-            else
-                    DataOutput(db.Flat.Where(x => x.City_name.StartsWith(this.SearchText.Text) || x.Street_name.StartsWith(this.SearchText.Text)).OrderByDescending(x => x.Flat_price).ToList());
+                DataOutput(db.Flat.Where(x => x.City_name.StartsWith(this.SearchText.Text) || x.Street_name.StartsWith(this.SearchText.Text)).OrderBy(x => x.Flat_price).ToList());
             }
         }
 

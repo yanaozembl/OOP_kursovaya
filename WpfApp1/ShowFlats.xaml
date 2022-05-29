@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ShowFlats" Height="598" Width="1243.5" MaxWidth="1300">
+        Title="ShowFlats" Height="512.667" Width="1243.5" MaxWidth="1300">
     <Window.Resources>
         <Style TargetType="Button">
             <Style.Setters>
@@ -27,42 +27,20 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
-
-        <ControlTemplate TargetType="Button" x:Key="btTemplate">
-            <Border CornerRadius="25" BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}"
-                Height="{TemplateBinding Height}"
-                Width="{TemplateBinding Width}" >
-                <ContentControl Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Content}"/>
-            </Border>
-        </ControlTemplate>
     </Window.Resources>
     <Grid Margin="0,0,2.667,0.667" MinWidth="1000" MaxWidth="1300">
         <Grid.RowDefinitions>
             <RowDefinition Height="33*" />
-            <RowDefinition Height="83*"/>
-            <RowDefinition Height="452*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="527*"/>
         </Grid.RowDefinitions>
-        <Border Style="{DynamicResource rowStyle}" Grid.Column="0"  Margin="0,2.667,0,2" Grid.Row="1" />
-        <Border Grid.Row="2" Style="{DynamicResource rowStyle}" Grid.Column="0"  Margin="0,2,0,-1" />
+        <Border Style="{DynamicResource rowStyle}" Grid.Column="0"  Margin="0,2.667,0,2.333" Grid.Row="1" />
+        <Border Grid.Row="2" Style="{DynamicResource rowStyle}" Grid.Column="0"  Margin="0,1.667,0,-1" />
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin ="50,6.667,0,26" MinWidth="558" MaxWidth="800" Grid.Row="1" Width="560">
-            <TextBlock Text="{DynamicResource Minsk}" Margin ="0 0 15 0" MinWidth="30" MaxWidth="100" TextAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" FontFamily="Lucida Console" LineHeight="6"  Foreground="#FF636161"/>
-            <TextBlock Text="{DynamicResource Grodno}" Margin ="0 0 15 0" MinWidth="30" MaxWidth="100" TextAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" FontSize="20" FontFamily="Lucida Console" LineHeight="6"  Foreground="#FF636161"/>
-            <TextBlock Text="{DynamicResource Brest}" Margin ="0 0 15 0" MinWidth="30" MaxWidth="100" TextAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" FontSize="20" FontFamily="Lucida Console" LineHeight="6"  Foreground="#FF636161"/>
-            <TextBlock Text="{DynamicResource Mogilev}" Margin ="0 0 15 0" MinWidth="30" MaxWidth="100" TextAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" FontSize="20" FontFamily="Lucida Console" LineHeight="6" Foreground="#FF636161"/>
-            <TextBlock Text="{DynamicResource Gomel}" Margin ="0,0,15,0" MinWidth="40" MaxWidth="100" TextAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" FontFamily="Lucida Console" LineHeight="6"  Foreground="#FF636161" Width="80"/>
-            <TextBlock Text="{DynamicResource Vitebsk}" Margin ="0 0 15 0" MinWidth="30" MaxWidth="100" TextAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" FontSize="20" FontFamily="Lucida Console" LineHeight="6" Foreground="#FF636161"/>
-        </StackPanel>
-
-        <StackPanel Margin="0,2,61,0" MinWidth="163" MaxWidth="210" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Height="411" Width="163" >
-            <Button x:Name="addButton" Command="{Binding CreateFlat}" Template="{StaticResource btTemplate}" Content="{DynamicResource Add}" HorizontalAlignment="Left" Margin="0 10 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="16"/>
-            <Button x:Name="editButton" Click="EditFlats" Template="{StaticResource btTemplate}" Content="{DynamicResource Edit}" HorizontalAlignment="Left" Margin="0 0 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="16"/>
-            <Button x:Name="deleteButton" Click="DeleteFlats" Template="{StaticResource btTemplate}" Content="{DynamicResource Delete}" HorizontalAlignment="Left" Margin="0 0 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="16"/>
+        <StackPanel Margin="0,26.333,10,0" MinWidth="163" MaxWidth="210" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" Height="159" Width="163" >
+            <Button x:Name="addButton" Command="{Binding CreateFlat}"  Content="{DynamicResource Add}" HorizontalAlignment="Left" Margin="0 10 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="16"/>
+            <Button x:Name="editButton" Click="EditFlats"  Content="{DynamicResource Edit}" HorizontalAlignment="Left" Margin="0 0 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="16"/>
+            <Button x:Name="deleteButton" Click="DeleteFlats"  Content="{DynamicResource Delete}" HorizontalAlignment="Left" Margin="0 0 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="16"/>
             <!--<Button x:Name="priceAscButton" Click="SortByPriceAsc" Template="{StaticResource btTemplate}" Content="{DynamicResource Asc}" HorizontalAlignment="Left" Margin="0 0 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="13"/>
             <Button x:Name="priceDescButton" Click="SortByPriceDesc" Template="{StaticResource btTemplate}" Content="{DynamicResource Desc}" HorizontalAlignment="Left" Margin="0 0 0 10" VerticalAlignment="Top" Width="163" BorderBrush="#FF18101A" Background="White" Height="40" FontFamily="Lucida Console" FontSize="15"/>-->
             <!--<StackPanel Orientation="Horizontal">
@@ -71,7 +49,7 @@
             </StackPanel>-->
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="31,2.667,0,0" VerticalAlignment="Top" Width="577" Grid.Row="1"/>
-        <ListView x:Name="ListView" HorizontalAlignment="Left" Height="386" Margin="10,21,0,0" VerticalAlignment="Top" MinWidth="558" MaxWidth="1000" Grid.Row="2" Width="906" SelectionChanged="ListView_SelectionChanged">
+        <ListView x:Name="ListView" HorizontalAlignment="Left" Height="386" Margin="10,26.333,0,0" VerticalAlignment="Top" MinWidth="558" MaxWidth="1000" Grid.Row="2" Width="906" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -86,16 +64,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <local:Switcher x:Name="swControl" Margin="787,0,35,9.333" Grid.Row="0" Grid.RowSpan="1"/>
-        <ComboBox x:Name="Sorting" HorizontalAlignment="Left" VerticalAlignment="Top" Width="184" Height="27" SelectionChanged="Sorting_SelectionChanged" Margin="584,4,0,0">
-            <ComboBoxItem x:Name="PriceAsc" >
-                <TextBlock  Text="{DynamicResource Asc}"/>
-            </ComboBoxItem>
-            <ComboBoxItem x:Name="PriceDesc">
-                <TextBlock Text="{DynamicResource Desc}"/>
-            </ComboBoxItem>
-        </ComboBox>
-        <TextBox x:Name="SearchText" HorizontalAlignment="Left" Height="23" Margin="10,1,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416" TextChanged="TextBox_TextChanged">
+        <local:Switcher x:Name="swControl" Margin="777,0,193,0" Grid.Row="0"/>
+        <TextBox x:Name="SearchText" HorizontalAlignment="Left" Height="23" Margin="10,3.333,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416" TextChanged="TextBox_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
@@ -119,7 +89,8 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <Button Content="Заявки на бронирование" Click="Button_Applicate_Click" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="232" Height="31" Background="#FFFFDD00" BorderBrush="#FFFFDD00"/>
+        <Button Content="Заявки на бронирование" Click="Button_Applicate_Click" HorizontalAlignment="Left" Margin="1041,0,0,-1" VerticalAlignment="Top" Width="193" Height="25" Background="#FFFFDD00" BorderBrush="#FFFFDD00" FontSize="13" FontFamily="Segoe UI"/>
+        <Button Content="{DynamicResource Back}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Height="23" Grid.RowSpan="2" FontFamily="Segoe UI" FontSize="13" BorderBrush="#FFFFDD00"/>
 
     </Grid>
 </Window>

@@ -56,6 +56,5 @@
                 <TextBlock Text="{DynamicResource Dark}"/>
             </ComboBoxItem>
         </ComboBox>
-        <Button Content="{DynamicResource Enter}" Template="{StaticResource btTemplate}" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Top" Width="110"  BorderBrush="White" Background="White" FontSize="12" Height="25"/>
     </StackPanel>
 </UserControl>
