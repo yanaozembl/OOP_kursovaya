@@ -27,6 +27,8 @@ namespace WpfApp1
             InitializeComponent();
             Calendar.DisplayDateStart = DateTime.Today;
             Calendar.SelectedDate = DateTime.Today;
+            Name.Text = ShowDeal.selectedBlock.Name;
+            Phone.Text = "+375" + ShowDeal.selectedBlock.Phone;
         }
         private void Button_Add_Date_click(object sender, RoutedEventArgs e)
         {

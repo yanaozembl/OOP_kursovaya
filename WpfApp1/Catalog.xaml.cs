@@ -11,6 +11,7 @@ namespace WpfApp1
     /// <summary>
     /// Логика взаимодействия для ClientSide.xaml
     /// </summary>
+    /// 
     public partial class Catalog : Window
     {
         public static Catalog CatalogForm;

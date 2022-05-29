@@ -32,7 +32,7 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="35,10,0,0" TextWrapping="Wrap" Text="Ранее забронированные квартиры" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Margin="23,26,0,0" TextWrapping="Wrap" Text="Ранее забронированные квартиры" VerticalAlignment="Top" Foreground="#FFFFDD00"/>
         <ListBox x:Name="flatsList" ItemTemplate="{StaticResource listTemplate}"
             SelectionChanged="flatsList_SelectionChanged" Grid.Column="0" Margin="0,66,10.333,10"/>
 

@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Viewing" Height="171" Width="294"
         WindowStartupLocation="CenterScreen">
+
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="30,17,0,0" TextWrapping="Wrap" Text="Желаетесь оставить заявку на квартиру?" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,38,0,0" TextWrapping="Wrap" Text="После этого действия с Вами свяжется администратор для уточнения времени встречи." VerticalAlignment="Top"/>
