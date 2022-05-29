@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,9 +35,26 @@ namespace WpfApp1
             {
                 var selectedClient = db.Client.Where(c => c.Phone_number == ShowDeal.selectedBlock.Phone).FirstOrDefault();
                 var selectedFlat = db.Flat.Where(f => f.City_name == ShowDeal.selectedBlock.City && f.Street_name == ShowDeal.selectedBlock.Street && f.House_number == ShowDeal.selectedBlock.House && f.Flat_number == ShowDeal.selectedBlock.Flat).FirstOrDefault();
-                db.Database.ExecuteSqlCommand("update deal set status=2, view_date=@date where client_id=@client_id and flat_id=@flat_id and status=1", new SqlParameter("@date", date.Date), new SqlParameter("@client_id", selectedClient.Id), new SqlParameter("@flat_id", selectedFlat.Id));
+                db.Database.ExecuteSqlCommand("update deal set status=2, view_date=@date where client_id=@client_id and flat_id=@flat_id", new SqlParameter("@date", date.Date), new SqlParameter("@client_id", selectedClient.Id), new SqlParameter("@flat_id", selectedFlat.Id));
                 ShowDeal.ShowDealForm.ListAppViewings.Items.Remove(ShowDeal.selectedBlock);
                 ShowDeal.Fill_flats_list(ShowDeal.ShowDealForm.ListViews, 2);
+
+                var mailFrom = new MailAddress("yanaozembl@gmail.com", "Premium Apartments");
+                var mailTo = new MailAddress("ozembl.yana375@yandex.ru", ShowDeal.selectedBlock.Name);
+                var message = new MailMessage(mailFrom, mailTo);
+                message.Body = $"Здравствуйте, {ShowDeal.selectedBlock.Name}! Заявка на просмотр квартиры г. {ShowDeal.selectedBlock.City}, ул. {ShowDeal.selectedBlock.Street}, д. {ShowDeal.selectedBlock.House}, кв. {ShowDeal.selectedBlock.Flat} одобрена. \n" +
+                $"Просмотр квартиры состоится {date.ToShortDateString()}. С Вами свяжется администратор для уточнения подробностей визита. \n"+
+                "Спасибо, что выбрали нас!";
+                message.Subject = "Заявка на просмотр квартиры одобрена!";
+
+                var client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(mailFrom.Address, "vquqigsgszjlawdc");
+                client.Send(message);
                 Close();
             }
         }

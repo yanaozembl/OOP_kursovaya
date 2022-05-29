@@ -48,14 +48,14 @@ namespace WpfApp1
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TabControl.SelectedItem == Applicate_view || TabControl.SelectedItem == Applicate_book)
-                Confirm_Button.Visibility = Visibility.Visible;
-            else Confirm_Button.Visibility = Visibility.Collapsed;
+                Confirm_Button.Visibility = Refuse_Button.Visibility=Visibility.Visible;
+            else Confirm_Button.Visibility = Refuse_Button.Visibility = Visibility.Collapsed;
         }
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ListAppViewings.SelectedItem!=null|| ListAppBookings.SelectedItem!=null)
-                Confirm_Button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFDD00"));
-            else Confirm_Button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCACACA"));
+                Confirm_Button.Background = Refuse_Button.Background= new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFDD00"));
+            else Confirm_Button.Background = Refuse_Button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCACACA"));
 
         }
         private void Button_Confirm_Click(object sender, RoutedEventArgs e)
@@ -71,10 +71,26 @@ namespace WpfApp1
                 selectedBlock = (ApplicateBlock)ListAppBookings.SelectedItem;
                 using (SampleContext db=new SampleContext())
                 {
-                    db.Database.ExecuteSqlCommand("update Deal set status=4 where flat_id=@id and deal_start_date=@date and status=3", new SqlParameter("@id", selectedBlock.Id), new SqlParameter("@date", selectedBlock.Deal_start_date.Substring(3)));
+                    db.Database.ExecuteSqlCommand("update Deal set status=4 where flat_id=@id and deal_start_date=@date", new SqlParameter("@id", selectedBlock.Id), new SqlParameter("@date", selectedBlock.Deal_start_date.Substring(3)));
                     ListAppBookings.Items.Remove(ListAppBookings.SelectedItem);
                     Fill_flats_list(ListBookings, 4);
                 }
+                var mailFrom = new MailAddress("yanaozembl@gmail.com", "Premium Apartments");
+                var mailTo = new MailAddress("ozembl.yana375@yandex.ru", ShowDeal.selectedBlock.Name);
+                var message = new MailMessage(mailFrom, mailTo);
+                message.Body = $"Здравствуйте, {ShowDeal.selectedBlock.Name}! Заявка на бронирование квартиры г. {selectedBlock.City}, ул. {selectedBlock.Street}, д. {selectedBlock.House}, кв. {selectedBlock.Flat} одобрена. \n" +
+                $"Дата заезда в квартиру назначена на {selectedBlock.Deal_start_date}. С Вами свяжется администратор для уточнения подробностей бронирования. \n" +
+                "Спасибо, что выбрали нас!";
+                message.Subject = "Заявка на бронирование квартиры одобрена!";
+
+                var client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(mailFrom.Address, "vquqigsgszjlawdc");
+                client.Send(message);
             }
         }
         internal static void Fill_flats_list(ListView List, int status)
@@ -125,6 +141,63 @@ namespace WpfApp1
                     }
 
                 }
+            }
+        }
+
+        private void Button_Refuse_Click(object sender, RoutedEventArgs e)
+        {
+            if (TabControl.SelectedItem == Applicate_view)
+            {
+                selectedBlock = (ApplicateBlock)ListAppViewings.SelectedItem;
+                using (SampleContext db = new SampleContext())
+                {
+                    var selectedClient = db.Client.Where(c => c.Phone_number == ShowDeal.selectedBlock.Phone).FirstOrDefault();
+                    var selectedFlat = db.Flat.Where(f => f.City_name == selectedBlock.City && f.Street_name == selectedBlock.Street && f.House_number == selectedBlock.House && f.Flat_number == selectedBlock.Flat).FirstOrDefault();
+                    db.Database.ExecuteSqlCommand("update deal set status=5 where client_id=@client_id and flat_id=@flat_id", new SqlParameter("@client_id", selectedClient.Id), new SqlParameter("@flat_id", selectedFlat.Id));
+                    ListAppViewings.Items.Remove(ListAppViewings.SelectedItem);
+                }
+                var mailFrom = new MailAddress("yanaozembl@gmail.com", "Premium Apartments");
+                var mailTo = new MailAddress("ozembl.yana375@yandex.ru", ShowDeal.selectedBlock.Name);
+                var message = new MailMessage(mailFrom, mailTo);
+                message.Body = $"Здравствуйте, {ShowDeal.selectedBlock.Name}! Заявка на просмотр квартиры г. {selectedBlock.City}, ул. {selectedBlock.Street}, д. {selectedBlock.House}, кв. {selectedBlock.Flat} отклонена. \n" +
+                $"С Вами свяжется администратор для уточнения причин отказа.";
+                message.Subject = "Заявка на просмотр квартиры отклонена";
+
+                var client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(mailFrom.Address, "vquqigsgszjlawdc");
+                client.Send(message);
+
+            }
+            else if (TabControl.SelectedItem == Applicate_book)
+            {
+
+                selectedBlock = (ApplicateBlock)ListAppBookings.SelectedItem;
+                using (SampleContext db = new SampleContext())
+                {
+                    db.Database.ExecuteSqlCommand("update Deal set status=5 where flat_id=@id and deal_start_date=@date", new SqlParameter("@id", selectedBlock.Id), new SqlParameter("@date", selectedBlock.Deal_start_date.Substring(3)));
+                    ListAppBookings.Items.Remove(ListAppBookings.SelectedItem);
+                }
+
+                var mailFrom = new MailAddress("yanaozembl@gmail.com", "Premium Apartments");
+                var mailTo = new MailAddress("ozembl.yana375@yandex.ru", ShowDeal.selectedBlock.Name);
+                var message = new MailMessage(mailFrom, mailTo);
+                message.Body = $"Здравствуйте, {ShowDeal.selectedBlock.Name}! Заявка на бронирование квартиры г. {selectedBlock.City}, ул. {selectedBlock.Street}, д. {selectedBlock.House}, кв. {selectedBlock.Flat} отклонена. \n" +
+                $"С Вами свяжется администратор для уточнения причин отказа.";
+                message.Subject = "Заявка на бронирование квартиры отклонена";
+
+                var client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(mailFrom.Address, "vquqigsgszjlawdc");
+                client.Send(message);
             }
         }
     }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ShowDeal" Height="598" Width="1244">
     <Grid>
-        <TabControl x:Name="TabControl"  Margin="10,48,27.333,87.667" BorderBrush="{x:Null}" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl x:Name="TabControl"  Margin="10,10,27.333,125.667" BorderBrush="{x:Null}" SelectionChanged="TabControl_SelectionChanged">
             <TabItem x:Name="Applicate_view"  Header= "Заявки на просмотр"  >
                 <TabItem.Content>
                     <ListView x:Name="ListAppViewings" HorizontalAlignment="Left" Height="386" VerticalAlignment="Top" Width="auto" SelectionChanged="ListView_SelectionChanged">
@@ -90,6 +90,7 @@
                 </TabItem.Content>
             </TabItem>
         </TabControl>
-        <Button x:Name="Confirm_Button" Content="Подтвердить" Click="Button_Confirm_Click"  Margin="448,530,667.333,9.667" MaxHeight="30" MaxWidth="120" Background="#FFCACACA" BorderBrush="#FFCACACA"/>
+        <Button x:Name="Confirm_Button" Content="Подтвердить" Click="Button_Confirm_Click"  Margin="233,448,882.333,91.667" MaxHeight="30" MaxWidth="120" Background="#FFCACACA" BorderBrush="#FFCACACA"/>
+        <Button x:Name="Refuse_Button" Content="Отклонить" Click="Button_Refuse_Click"  Margin="406,448,709.333,91.667" MaxHeight="30" MaxWidth="120" Background="#FFCACACA" BorderBrush="#FFCACACA"/>
     </Grid>
 </Window>

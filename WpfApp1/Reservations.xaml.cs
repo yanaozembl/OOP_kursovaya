@@ -27,7 +27,7 @@ namespace WpfApp1
         public List<Flat> reserver_flats;
         private string status;
         public Reservations()
-        {        
+        {
             InitializeComponent();
             if (flatsList != null)
             {
@@ -66,6 +66,12 @@ namespace WpfApp1
                                     status = "Забронировано";
                                     break;
                                 }
+                            case 5:
+                                {
+                                    status = "Отклонено";
+                                    break;
+                                }
+
                         }
 
                         if (item.City_name.Trim().ToLower() != "минск")
@@ -93,4 +99,3 @@ namespace WpfApp1
     }
 
 }
-
