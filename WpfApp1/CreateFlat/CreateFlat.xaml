@@ -65,7 +65,6 @@
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
-
         </TextBox>
         <Button Content="{DynamicResource ChooseDirectory}" Click="Button_Directory_Click" HorizontalAlignment="Left" Margin="24,462.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="23" Background="#FFFFDD00" BorderBrush="#FFFFDD00"/>
         <TextBlock x:Name="Pathe" HorizontalAlignment="Left" Margin="181,462.333,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Выбранный путь" VerticalAlignment="Top" Foreground="#7F000000" MaxWidth="250" Height="16" />
@@ -77,7 +76,7 @@
         <TextBox x:Name="Subway_stat"  Text="" HorizontalAlignment="Left" Height="23" Margin="181,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="336,97.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource Floor}" Grid.Row="1" Height="16" Width="85"/>
         <TextBox x:Name="Floor"  Text="" HorizontalAlignment="Left" Height="23" Margin="336,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="449,96.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource MaxFloor}" Grid.Row="1" Height="16" Width="85"/>
+        <TextBlock HorizontalAlignment="Left" Margin="449,96.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{DynamicResource MaxFloor}" Grid.Row="1" Height="16" Width="105" FontSize="11.5"/>
         <TextBox x:Name="MaxFloor"  Text="" HorizontalAlignment="Left" Height="23" Margin="449,118.333,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="85" Grid.Row="1"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="26,400.333,33,115.667">

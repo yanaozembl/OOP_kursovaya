@@ -27,7 +27,6 @@ namespace WpfApp1
         public static ShowDeal ShowDealForm;
         public string languagePath = "LanguageSelector/ru-Ru.xaml";
         public string stylePath = "StyleSelector/DarkTheme.xaml";
-
         public ShowDeal()
         {
             InitializeComponent();
@@ -143,7 +142,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void Button_Refuse_Click(object sender, RoutedEventArgs e)
         {
             if (TabControl.SelectedItem == Applicate_view)

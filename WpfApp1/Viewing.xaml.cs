@@ -23,7 +23,6 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-
         private void Button_Yes_Click(object sender, RoutedEventArgs e)
         {
             using(SampleContext db=new SampleContext())

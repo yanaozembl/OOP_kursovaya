@@ -12,9 +12,6 @@ using System.Windows.Media;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public static MainWindow MainForm;
@@ -23,7 +20,6 @@ namespace WpfApp1
         public string stylePath = "StyleSelector/DarkTheme.xaml";
         public SampleContext db = new SampleContext();
         public static Client selectedClient;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +38,6 @@ namespace WpfApp1
             Cursor customCursor = new Cursor(sri.Stream);
             this.Cursor = customCursor;
         }
-
         public void SwitchLanguageRussian() // Меняем язык на русский
         {
             languagePath = "LanguageSelector/ru-RU.xaml";
@@ -50,7 +45,6 @@ namespace WpfApp1
             language.Source = new Uri(languagePath, UriKind.Relative);
             Resources.MergedDictionaries.Add(language);
         }
-
         public void SwitchLanguageEng() // Меняем язык на англ
         {
             languagePath = "LanguageSelector/en-US.xaml";
@@ -58,7 +52,6 @@ namespace WpfApp1
             language.Source = new Uri(languagePath, UriKind.Relative);
             Resources.MergedDictionaries.Add(language);
         }
-
         public void SetBlackStyle()
         {
             stylePath = "StyleSelector/DarkTheme.xaml";
@@ -133,14 +126,16 @@ namespace WpfApp1
             {
                 Email.Background = Brushes.DarkRed;
                 MessageBox.Show("Email введен некорректно");
+                Email.Background = Brushes.Transparent;
             }
             else if (db.Client.Where(b => b.Password == PassBox.Password).FirstOrDefault() == null)
             {
                 PassBox.Background = Brushes.DarkRed;
                 MessageBox.Show("Пароль введен некорректно");
+                PassBox.Background = Brushes.Transparent;
+                PassBox.Password = "";
             }
         }
-
         private void TabControl1_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (TabControl1.SelectedItem == Sign_up)
@@ -154,68 +149,73 @@ namespace WpfApp1
         }
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-            string email = Email.Text.ToLower().Trim();
+            string email = EmailReg.Text.ToLower().Trim();
             string pass = PassBoxReg.Password;
             string pass_2 = PassBoxReg_2.Password;
 
-            Email.ToolTip = "";
-            Email.Background = Brushes.Transparent;
-
-            PassBox.ToolTip = "";
-            PassBox.Background = Brushes.Transparent;
-
-            PassBoxReg_2.ToolTip = "";
-            PassBoxReg_2.Background = Brushes.Transparent;
-
-            if (email.Length < 5 || email.Contains('@') == false || email.Contains('.') == false)
+            try
             {
-                Email.ToolTip = "Email введен некорректно";
-                Email.Background = Brushes.DarkRed;
-            }
-            else if (pass.Length <= 5)
-            {
-                PassBox.ToolTip = "Пароль должен быть более 5 символов";
-                PassBox.Background = Brushes.DarkRed;
-            }
-            else if (pass != pass_2)
-            {
-                PassBoxReg_2.ToolTip = "Пароли не совпадают";
-                PassBoxReg_2.Background = Brushes.DarkRed;
-            }
-            else
-            {
-                try
+            if (Surname.Text == "" || Name.Text == "" || Patronymic.Text == "" || Email.Text == "" || PhoneNum.Text == "" || PassBox.Password == "")
+                throw new Exception("Заполните все поля.");
+                if (email.Length < 5 || email.Contains('@') == false || email.Contains('.') == false)
                 {
-                    if(Convert.ToInt32(PhoneNum.Text)<=0)
-                        throw new Exception("Поле не должно быть отрицательным");
-                    Regex regex = new Regex(@"(2|3|9|4){2}\[0-9]{7}");
-                    MatchCollection matches = regex.Matches(PhoneNum.Text);
-                    if (matches.Count > 0)
+                    throw new Exception("Email введен некорректно");
+                }
+                else if (pass.Length <= 5)
+                {
+                    throw new Exception("Пароль должен быть более 5 символов");
+                }
+                else if (pass != pass_2)
+                {
+                    throw new Exception("Пароли не совпадают");
+                }
+                else
+                {
+                    try
                     {
-                        if (Woman.IsChecked == true)
-                        selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "ж", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
-                        else selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "м", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
-                        db.Client.Add(selectedClient);
-                        db.SaveChanges();
-                        Catalog create = new Catalog();
-                        create.Show();
-                        Close();
+                        Regex regexText = new Regex(@"[а-я]");
+                        MatchCollection matchesSurname = regexText.Matches(Surname.Text);
+                        MatchCollection matchesName = regexText.Matches(Name.Text);
+                        MatchCollection matchesPatronymic = regexText.Matches(Patronymic.Text);
+                        if (matchesSurname.Count > 0 && matchesName.Count > 0 && matchesPatronymic.Count > 0)
+                        {
+                            if (Convert.ToInt32(PhoneNum.Text) <= 0)
+                                throw new Exception("Поле не должно быть отрицательным или равным нулю");
+                            Regex regexNum = new Regex(@"(2|3|9|4){2}[0-9]{7}");
+                            MatchCollection matchesNum = regexNum.Matches(PhoneNum.Text);
+                            if (matchesNum.Count > 0)
+                            {
+                                if (Woman.IsChecked == true)
+                                    selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "ж", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
+                                else selectedClient = new Client(Surname.Text, Name.Text, Patronymic.Text, "м", Convert.ToInt32(PhoneNum.Text), EmailReg.Text, Convert.ToString(PassBoxReg.Password));
+                                db.Client.Add(selectedClient);
+                                db.SaveChanges();
+                                Catalog create = new Catalog();
+                                create.Show();
+                                Close();
+                            }
+                            else
+                                throw new Exception("Номер может начинаться на 29, 44, 33, а также содержать только 9 цифр");
+                        }
+                        else throw new Exception("Тектовые поля не могут содержать цифр.");
                     }
-                    else 
-                        throw new Exception("Номер может начинаться на 29, 44, 33, а также содержать только 9 цифр");
+                    catch (NullReferenceException)
+                    {
+                        MessageBox.Show("Введите все поля.");
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Некорректный формат данных. Проверьте значение полей.");
+                    }
+                    catch (Exception exp)
+                    {
+                        MessageBox.Show(exp.Message);
+                    }
                 }
-                catch (NullReferenceException)
-                {
-                    MessageBox.Show("Введите все поля.");
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Некорректный формат данных. Проверьте значение полей.");
-                }
-                catch( Exception exp)
-                {
-                    MessageBox.Show(exp.Message);
-                }
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
             }
         }
     }

@@ -210,7 +210,6 @@
     <Compile Include="ShowFlats.xaml.cs">
       <DependentUpon>ShowFlats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="State.cs" />
     <Compile Include="Switcher.xaml.cs">
       <DependentUpon>Switcher.xaml</DependentUpon>
     </Compile>
@@ -230,10 +229,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConfirmView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Converter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,9 +354,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\12.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="premium-icon-user-3334349.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\city.png" />

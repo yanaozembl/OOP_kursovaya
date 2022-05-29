@@ -5,12 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace WpfApp1
 {
@@ -25,14 +20,28 @@ namespace WpfApp1
             Deposit.Text = Catalog.selectedFlat.Deposit + "$";
             Price.Text = Catalog.selectedFlat.Flat_price + "$";
         }
-
         private void Button_Send_Click(object sender, RoutedEventArgs e)
         {
-            using (SampleContext db=new SampleContext())
+            try
             {
-                db.Deal.Add(new Deal(Catalog.selectedFlat.Id, MainWindow.selectedClient.Id, Calendar.SelectedDate, Convert.ToInt32(Rental_period.Text), Catalog.selectedFlat.Flat_price + Catalog.selectedFlat.Deposit, 3));
-                db.SaveChanges();
-                Close();
+                Regex regexText = new Regex(@"[0-9]");
+                MatchCollection matchesNum = regexText.Matches(Rental_period.Text);
+                if (matchesNum.Count == 0)
+                    throw new Exception("Срок аренды должен включать только цифры.");
+                using (SampleContext db = new SampleContext())
+                {
+                    db.Deal.Add(new Deal(Catalog.selectedFlat.Id, MainWindow.selectedClient.Id, Calendar.SelectedDate, Convert.ToInt32(Rental_period.Text), Catalog.selectedFlat.Flat_price + Catalog.selectedFlat.Deposit, 3));
+                    db.SaveChanges();
+                    Close();
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введите все поля.");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
             }
         }
     }

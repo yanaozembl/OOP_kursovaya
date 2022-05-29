@@ -15,6 +15,8 @@ using WpfApp1.Command;
 using System.Windows.Resources;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.IO;
 
 namespace WpfApp1.CreateFlat
 {
@@ -39,14 +41,40 @@ namespace WpfApp1.CreateFlat
             this.Cursor = customCursor;
 
         }
-
         private void AddFlat(object sender, RoutedEventArgs e)
         {
             try
             {
-                if(City.Text==String.Empty || Street.Text==String.Empty || FlatNum.Text == String.Empty || House.Text == String.Empty || Price.Text == String.Empty || Deposit.Text == String.Empty || Floor.Text == String.Empty || MaxFloor.Text == String.Empty || District.Text == String.Empty || Subway_stat.Text == String.Empty || Pathe.Text == String.Empty || CountOfRoom.Text == String.Empty || Description.Text == String.Empty)
+                Regex regexText = new Regex(@"[а-я]");
+                MatchCollection matchesCity = regexText.Matches(City.Text);
+                MatchCollection matchesStreet = regexText.Matches(Street.Text);
+                MatchCollection matchesDistrict = regexText.Matches(District.Text);
+                MatchCollection matchesSubway = regexText.Matches(Subway_stat.Text);
+
+                string[] imageList = (string[])Directory.GetFiles(Pathe.Text, "*.jp*g", SearchOption.AllDirectories);
+                if (City.Text==String.Empty || Street.Text==String.Empty || FlatNum.Text == String.Empty || House.Text == String.Empty || Price.Text == String.Empty || Deposit.Text == String.Empty || Floor.Text == String.Empty || MaxFloor.Text == String.Empty || District.Text == String.Empty || Subway_stat.Text == String.Empty || Pathe.Text == String.Empty || CountOfRoom.Text == String.Empty || Description.Text == String.Empty)
                 {
                     throw new Exception("Введите все поля");
+                }
+                if (Convert.ToInt32(MaxFloor.Text) > 100 || Convert.ToInt32(MaxFloor.Text) <= 0 || Convert.ToInt32(Floor.Text)<=0 || Convert.ToInt32(Floor.Text)>100)
+                {
+                    throw new Exception("Этаж дома должен быть в пределах от 1 до 100.");
+                }
+                if (Pathe.Text == "Выбранный путь")
+                {
+                    throw new Exception("Добавьте папку с фотографиями квартиры.");
+                }
+                if (imageList.Count() == 0)
+                {
+                    throw new Exception("Указанная папка не содержит фото. Выберите другую.");
+                }
+                if (matchesCity.Count == 0 || matchesStreet.Count == 0 || matchesDistrict.Count == 0 || matchesSubway.Count == 0)
+                {
+                    throw new Exception("Текстовые поля должны содержать только буквы.");
+                }
+                if (Convert.ToInt32(FlatNum.Text)<=0 || Convert.ToDecimal(Price.Text) <= 0 || Convert.ToDecimal(Deposit.Text) <= 0 || Convert.ToDouble(Square.Text)<=0 || Convert.ToInt32(CountOfRoom.Text)<=0)
+                {
+                    throw new Exception("Числовые поля должны быть не меньше нуля.");
                 }
                 else
                 {
@@ -59,13 +87,20 @@ namespace WpfApp1.CreateFlat
                     Close();
                 }
             }
+            catch (FormatException)
+            {
+                System.Windows.MessageBox.Show("Неверный формат данных.");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                System.Windows.MessageBox.Show("Выберите папку.");
+            }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.Message);
             }
-            
-        }
 
+        }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (Wifi.IsChecked == true)
@@ -92,7 +127,6 @@ namespace WpfApp1.CreateFlat
             if (Tree_v.IsChecked == false)
                 tree_v = false;
         }
-
         private void Button_Directory_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog FBD = new FolderBrowserDialog();

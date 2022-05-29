@@ -84,7 +84,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void flatsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedBlock = (Block)flatsList.SelectedItem;

@@ -22,7 +22,7 @@
     <v:String x:Key="Asc">Цена по возрастанию</v:String>
     <v:String x:Key="Desc">Цена по убыванию</v:String>
 
-    <v:String x:Key="City">Город</v:String>
+    <v:String x:Key="City">Город (область)</v:String>
     <v:String x:Key="Street">Улица</v:String>
     <v:String x:Key="House">Дом</v:String>
     <v:String x:Key="Flat">Квартира</v:String>
@@ -31,7 +31,7 @@
     <v:String x:Key="District">Район</v:String>
     <v:String x:Key="Subway">Метро</v:String>
     <v:String x:Key="Floor">Этаж</v:String>
-    <v:String x:Key="MaxFloor">Последний этаж дома</v:String>
+    <v:String x:Key="MaxFloor">Последний этаж</v:String>
     <v:String x:Key="Deposit">Залог</v:String>
     <v:String x:Key="Description">Описание</v:String>
     <v:String x:Key="ChooseDirectory">Выбрать папку</v:String>
