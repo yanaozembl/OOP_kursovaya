@@ -49,7 +49,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Отчество"/>
                         <TextBox x:Name="Patronymic" HorizontalAlignment="Left" Height="23" Margin="10,127,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="197"/>
                         <TextBlock HorizontalAlignment="Left" Margin="10,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Пол"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="10,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Номер телефона"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="10,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Номер телефона " Width="169"/>
                         <TextBox x:Name="PhoneNum" HorizontalAlignment="Left" Height="23" Margin="10,239,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="197"/>
                         <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Email"/>
                         <TextBox x:Name="EmailReg" HorizontalAlignment="Left" Height="23" Margin="11,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>

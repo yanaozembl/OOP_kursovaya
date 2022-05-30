@@ -198,6 +198,13 @@ namespace WpfApp1
                 client.Send(message);
             }
         }
+
+        private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
+            ShowFlats create = new ShowFlats();
+            create.Show();
+                Close();
+        }
     }
 }
 

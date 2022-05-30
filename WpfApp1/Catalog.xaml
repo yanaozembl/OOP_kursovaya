@@ -97,32 +97,33 @@
                 </MenuItem>
                 <MenuItem x:Name="Brest"  Header="Брест" Padding="15 2 5 5" Height="24" Width="67">
                     <MenuItem Header="Районы">
-                        <MenuItem Header="Ленинский"/>
-                        <MenuItem Header="Московский"/>
+                        <MenuItem Header="Ленинский" Click="Lenin_Brest"/>
+                        <MenuItem Header="Московский" Click="Lenin_Moscow"/>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem  x:Name="Vitebsk" Header="Витебск" Padding="10 2 5 5" Height="24" Width="67">
                     <MenuItem  Header="Районы">
-                        <MenuItem Header="Железнодорожный"/>
-                        <MenuItem Header="Октябрьский"/>
-                        <MenuItem Header="Первомайский"/>
+                        <MenuItem Header="Железнодорожный" Click="Zhelezo"/>
+                        <MenuItem Header="Октябрьский" Click="Oktyabr"/>
+                        <MenuItem Header="Первомайский" Click="Pervom"/>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem x:Name="Gomel"  Header="Гомель" Padding="12 2 5 5" Height="24" Width="67">
                     <MenuItem  Header="Районы">
-                        <MenuItem Header="Железнодорожный"/>
-                        <MenuItem Header="Советский"/>
-                        <MenuItem Header="Центральный"/>
-                        <MenuItem Header="Новобелицкий"/>
+                        <MenuItem Header="Железнодорожный" Click="Zhelezo_Gomel"/>
+                        <MenuItem Header="Советский" Click="Sovet_Gomel"/>
+                        <MenuItem Header="Центральный" Click="Central_Gomel"/>
+                        <MenuItem Header="Новобелицкий" Click="Novo_Gomel"/>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem x:Name="Grodno"  Header="Гродно" Padding="13 2 5 5" Height="24" Width="67">
-                    <MenuItem  Header="Районы">
-                        <MenuItem Header="Ленинский"/>
-                        <MenuItem Header="Октябрьский"/>
-                    </MenuItem>
+                <MenuItem  Header="Гродно" Padding="13 2 5 5" Height="24" Width="67" Click="Button_Grodno_Click">
+                    <MenuItem Header="Ленинский" Click="Lenin_Grodno"/>
+                    <MenuItem Header="Октябрьский" Click="Okt_Grodno"/>
                 </MenuItem>
-                <MenuItem x:Name="Mogilev"  Header="Могилев" Padding="9 2 5 5" Height="24" Width="67"/>
+                <MenuItem  Header="Могилев" Padding="9 2 5 5" Height="24" Width="67" Click="Button_Mogilev_Click">
+                    <MenuItem Header="Хотимский" Click="Hotim"/>
+                    <MenuItem Header="Быховский" Click="Byhov"/>
+                </MenuItem>
                 <TextBox x:Name="SearchBox" Height="23" TextWrapping="Wrap" Width="223" TextChanged="SearchBox_TextChanged">
                     <TextBox.Style>
                         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -173,12 +174,12 @@
         <Button Click="Button_Reservation_Click" Content="Бронирования" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="82" Background="{x:Null}" BorderBrush="#FFFFDD00" Foreground="#FF0E0E0E" Height="24" FontFamily="Open sans" FontSize="12" BorderThickness="0,0,0,1" Grid.Column="2"/>
         <Button Click="Button_Sign_out_Click" Content="Выйти" Grid.Column="1" HorizontalAlignment="Left" Margin="227.667,0,0,0" VerticalAlignment="Top" Width="50" Background="{x:Null}" BorderBrush="#FFFFDD00" Foreground="#FF0E0E0E" Height="24" FontFamily="Open sans" FontSize="12" BorderThickness="0,0,0,1"/>
         <Button Click="Image_Account_Click" Content="Управление аккаунтом" HorizontalAlignment="Left" Margin="86.667,0,0,0" VerticalAlignment="Top" Width="136" Background="{x:Null}" BorderBrush="#FFFFDD00" Foreground="#FF0E0E0E" Height="24" FontFamily="Open sans" FontSize="12" Grid.Column="1" BorderThickness="0,0,0,1"/>
-        <Button Content="Минск" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Могилев" Grid.Column="1" HorizontalAlignment="Left" Margin="113.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Витебск" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="56" Background="{x:Null}" BorderBrush="#FFFFDD00" Click="Button_Click"/>
-        <Button Content="Гомель" Grid.Column="1" HorizontalAlignment="Left" Margin="165.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Гродно" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
-        <Button Content="Брест" Grid.Column="1" HorizontalAlignment="Left" Margin="75.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Content="Минск" Click="Button_Minsk_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Content="Могилев" Click="Button_Mogilev_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="113.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Content="Витебск" Click="Button_Vitebsk_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,21,0,0" Grid.Row="1" VerticalAlignment="Top" Width="56" Background="{x:Null}" BorderBrush="#FFFFDD00" />
+        <Button Content="Гомель" Click="Button_Gomel_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="165.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Content="Гродно" Click="Button_Grodno_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="61" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
+        <Button Content="Брест" Click="Button_Brest_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="75.667,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" Background="{x:Null}" BorderBrush="#FFFFDD00"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="483" Margin="9.667,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="258">
             <StackPanel x:Name="Comfort" Background="White">
                 <TextBlock Text="Популярные фильтры                                 ↓" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1">
@@ -253,7 +254,7 @@
                     </Style>
                 </StackPanel.Style>
             </StackPanel>
-            <Button Content="Очистить" Margin="0 10 0 0" Background="#FFFFDD00" BorderBrush="#FFFFDD00"/>
+            <Button Content="Очистить" Margin="0 10 0 0" Background="#FFFFDD00" BorderBrush="#FFFFDD00" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </Window>

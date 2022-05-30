@@ -90,7 +90,7 @@
             </TextBox.Style>
         </TextBox>
         <Button Content="Заявки на бронирование" Click="Button_Applicate_Click" HorizontalAlignment="Left" Margin="1041,0,0,-1" VerticalAlignment="Top" Width="193" Height="25" Background="#FFFFDD00" BorderBrush="#FFFFDD00" FontSize="13" FontFamily="Segoe UI"/>
-        <Button Content="{DynamicResource Back}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Height="23" Grid.RowSpan="2" FontFamily="Segoe UI" FontSize="13" BorderBrush="#FFFFDD00"/>
+        <Button Content="{DynamicResource Back}" Click="Button_Back_Click"  HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Height="23" Grid.RowSpan="2" FontFamily="Segoe UI" FontSize="13" BorderBrush="#FFFFDD00"/>
 
     </Grid>
 </Window>

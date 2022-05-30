@@ -8,7 +8,7 @@
         Title="Reservations" Height="713" Width="1308">
     <Window.Resources>
         <DataTemplate x:Key="listTemplate">
-            <StackPanel Margin="5" Orientation="Horizontal" Height="250" Width="1200">
+            <StackPanel Margin="5" Orientation="Horizontal" Height="250" Width="1400">
                 <Grid  Width="350" Height="250">
                     <Image Source="{Binding Image}" Stretch="Fill"/>
                 </Grid>
@@ -27,12 +27,12 @@
                     <TextBlock x:Name="Date" FontSize="14" Text="{Binding Publication_date}" HorizontalAlignment="Left" />
                 </StackPanel>
                 <TextBlock x:Name="Price" FontSize="14" Text="{Binding Path=Price}" HorizontalAlignment="Left" Margin="0,0,0,0"/>
-                <TextBlock x:Name="Status" FontSize="12" Text="{Binding Status}" Margin="20,0,0,0" Width="auto" FontWeight="Bold"/>
+                <TextBlock x:Name="Status" FontSize="12" Text="{Binding Status}" Margin="20,0,0,0" Width="300" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <TextBlock HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Margin="23,26,0,0" TextWrapping="Wrap" Text="Ранее забронированные квартиры" VerticalAlignment="Top" Foreground="#FFFFDD00"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="18" FontWeight="SemiBold" Margin="23,26,0,0" TextWrapping="Wrap" Text="Отслеживание статуса заявок" VerticalAlignment="Top" Foreground="Black"/>
         <ListBox x:Name="flatsList" ItemTemplate="{StaticResource listTemplate}"
             SelectionChanged="flatsList_SelectionChanged" Grid.Column="0" Margin="0,66,10.333,10"/>
 

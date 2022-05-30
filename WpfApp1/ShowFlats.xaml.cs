@@ -123,5 +123,12 @@ namespace WpfApp1
         {
             selectedFlat = (Flat)ListView.SelectedItem;
         }
+
+        private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow create = new MainWindow();
+            create.Show();
+            Close();
+        }
     }
 }

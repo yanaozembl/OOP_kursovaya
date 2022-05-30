@@ -89,6 +89,22 @@ namespace WpfApp1
         {
             Choose_District("Фрунзенский", "Минск");
         }
+        private void Lenin_Grodno(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Ленинский", "Гродно");
+        }
+        private void Okt_Grodno(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Октябрьский", "Гродно");
+        }
+        private void Hotim(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Хотимский", "Могилев");
+        }
+        private void Byhov(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Быховский", "Могилев");
+        }
         private void Central_Minsk_Click(object sender, RoutedEventArgs e)
         {
             Choose_District("Центральный", "Минск");
@@ -116,6 +132,42 @@ namespace WpfApp1
         private void Oktyabrskiy_Minsk_Click(object sender, RoutedEventArgs e)
         {
             Choose_District("Октябрьский", "Минск");
+        }
+        private void Lenin_Brest(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Ленинский", "Брест");
+        }
+        private void Lenin_Moscow(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Ленинский", "Брест");
+        }
+        private void Zhelezo(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Железнодорожный", "Витебск");
+        }
+        private void Oktyabr(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Октябрьский", "Витебск");
+        }
+        private void Pervom(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Первомайский", "Витебск");
+        }
+        private void Zhelezo_Gomel(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Железнодорожный", "Гомель");
+        }
+        private void Sovet_Gomel(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Советский", "Гомель");
+        }
+        private void Central_Gomel(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Центральный", "Гомель");
+        }
+        private void Novo_Gomel(object sender, RoutedEventArgs e)
+        {
+            Choose_District("Новобелицкий", "Гомель");
         }
         private void Zavodskoy_Minsk_Click(object sender, RoutedEventArgs e)
         {
@@ -274,10 +326,6 @@ namespace WpfApp1
                 DataOutput(db.Flat.Where(f => f.Status == 0 && f.Subway_stat == subway).ToList());
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -292,6 +340,20 @@ namespace WpfApp1
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(Room1!=null && Room2!=null&& Room3!=null&&Room4!=null&&ManyRoom!=null&& Wifi != null && Parking != null && Tree_v != null && City_v != null && Conditioner != null)
+            {
+                Room1.IsChecked = false;
+                Room2.IsChecked = false;
+                Room3.IsChecked = false;
+                Room4.IsChecked = false;
+                ManyRoom.IsChecked = false;
+                Wifi.IsChecked = false;
+                Parking.IsChecked = false;
+                Tree_v.IsChecked = false;
+                City_v.IsChecked = false;
+                Conditioner.IsChecked = false;
+            }
+
             using (SampleContext db = new SampleContext())
             {
                 List<Flat> flats=db.Flat.Where(x => x.Status == 0).ToList();
@@ -306,6 +368,12 @@ namespace WpfApp1
         }
         private void CheckBox_Comfort_Checked(object sender, RoutedEventArgs e)
         {
+            Room1.IsChecked = false;
+            Room2.IsChecked = false;
+            Room3.IsChecked = false;
+            Room4.IsChecked = false;
+            ManyRoom.IsChecked = false;
+            Sorting.SelectedIndex = 0;
             using (SampleContext db = new SampleContext())
             {
                 List<Flat> selectedFlats = db.Flat.Where(x => x.Status == 0).ToList(); ;
@@ -324,6 +392,12 @@ namespace WpfApp1
         }
         private void CheckBox_Count_Checked(object sender, RoutedEventArgs e)
         {
+            Wifi.IsChecked = false;
+            Parking.IsChecked = false;
+            Tree_v.IsChecked = false;
+            City_v.IsChecked = false;
+            Conditioner.IsChecked = false;
+            Sorting.SelectedIndex = 0;
             List<Flat> selectedFlats = new List<Flat>();
             using (SampleContext db = new SampleContext())
             {
@@ -342,5 +416,57 @@ namespace WpfApp1
                 DataOutput(selectedFlats);
             }
         }
+
+        private void Button_Minsk_Click(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Минск");
+        }
+
+        private void Button_Mogilev_Click(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Могилев");
+        }
+        private void Mogilev(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Могилев");
+        }
+
+        private void Button_Grodno_Click(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Гродно");
+        }
+        private void Grodno(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Гродно");
+        }
+
+        private void Button_Brest_Click(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Брест");
+
+        }
+
+        private void Button_Gomel_Click(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Гомель");
+
+        }
+
+        private void Button_Vitebsk_Click(object sender, RoutedEventArgs e)
+        {
+            Choose_City("Витебск");
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            using (SampleContext db = new SampleContext())
+            {
+                DataOutput(db.Flat.ToList());
+
+            }
+
+        }
+
     }
 }

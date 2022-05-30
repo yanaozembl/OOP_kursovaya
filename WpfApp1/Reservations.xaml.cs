@@ -92,8 +92,11 @@ namespace WpfApp1
             {
                 selectedDeal = db.Deal.Where(d => d.Flat_id == selectedFlat.Id).FirstOrDefault();
             }
-            ReservedFlat create = new ReservedFlat();
-            create.Show();
+            if (selectedDeal.Status == 3|| selectedDeal.Status == 4)
+            {
+                ReservedFlat create = new ReservedFlat();
+                create.Show();
+            }
         }
     }
 

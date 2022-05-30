@@ -29,6 +29,21 @@ namespace WpfApp1
             Description.Text = Catalog.selectedFlat.Flat_description;
             Deposit.Text = Catalog.selectedFlat.Deposit + "$";
             Price.Text = Catalog.selectedFlat.Flat_price + "$";
+            if (Catalog.selectedFlat.Parking == true)
+                ParkingImg.Visibility = Parking.Visibility = Visibility.Visible;
+            else ParkingImg.Visibility = Parking.Visibility = Visibility.Collapsed;
+            if (Catalog.selectedFlat.Wifi == true)
+                WifiImg.Visibility = Wifi.Visibility = Visibility.Visible;
+            else WifiImg.Visibility = Wifi.Visibility = Visibility.Collapsed;
+            if (Catalog.selectedFlat.Conditioner == true)
+                CondImg.Visibility = Conditioner.Visibility = Visibility.Visible;
+            else CondImg.Visibility = Conditioner.Visibility = Visibility.Collapsed;
+            if (Catalog.selectedFlat.City_view == true)
+                CityImg.Visibility = City.Visibility = Visibility.Visible;
+            else CityImg.Visibility = City.Visibility = Visibility.Collapsed;
+            if (Catalog.selectedFlat.Tree_view == true)
+                TreeImg.Visibility = Tree.Visibility = Visibility.Visible;
+            else TreeImg.Visibility = Tree.Visibility = Visibility.Collapsed;
 
             using (SampleContext db=new SampleContext())
             {

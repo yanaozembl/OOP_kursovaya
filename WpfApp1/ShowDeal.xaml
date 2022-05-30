@@ -92,6 +92,7 @@
         </TabControl>
         <Button x:Name="Confirm_Button" Content="Подтвердить" Click="Button_Confirm_Click"  Margin="309,482,487,57.667" MaxHeight="30" MaxWidth="120" Background="#FFCACACA" BorderBrush="#FFCACACA"/>
         <Button x:Name="Refuse_Button" Content="Отклонить" Click="Button_Refuse_Click"  Margin="450,482,351,57.667" MaxHeight="30" MaxWidth="120" Background="#FFCACACA" BorderBrush="#FFCACACA"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="18" FontWeight="SemiBold" TextWrapping="Wrap" Text="Администрирование квартир" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="111,7,0,0" FontSize="18" FontWeight="SemiBold" TextWrapping="Wrap" Text="Администрирование квартир" VerticalAlignment="Top"/>
+        <Button Content="{DynamicResource Back}" Click="Button_Back_Click"  HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Height="23" Grid.RowSpan="2" FontFamily="Segoe UI" FontSize="13" BorderBrush="#FFFFDD00" Background="#00000000"/>
     </Grid>
 </Window>

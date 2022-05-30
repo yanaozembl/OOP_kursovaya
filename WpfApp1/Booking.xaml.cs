@@ -28,11 +28,13 @@ namespace WpfApp1
                 MatchCollection matchesNum = regexText.Matches(Rental_period.Text);
                 if (matchesNum.Count == 0)
                     throw new Exception("Срок аренды должен включать только цифры.");
+                if (Convert.ToInt32(Rental_period.Text) <= 0)
+                    throw new Exception("Срок аренды должен быть положительным");
                 using (SampleContext db = new SampleContext())
                 {
-                    db.Deal.Add(new Deal(Catalog.selectedFlat.Id, MainWindow.selectedClient.Id, Calendar.SelectedDate, Convert.ToInt32(Rental_period.Text), Catalog.selectedFlat.Flat_price + Catalog.selectedFlat.Deposit, 3));
-                    db.SaveChanges();
-                    Close();
+                        db.Deal.Add(new Deal(Catalog.selectedFlat.Id, MainWindow.selectedClient.Id, Calendar.SelectedDate, Convert.ToInt32(Rental_period.Text), Catalog.selectedFlat.Flat_price + Catalog.selectedFlat.Deposit, 3));
+                        db.SaveChanges();
+                        Close();
                 }
             }
             catch (FormatException)
